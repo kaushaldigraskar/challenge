@@ -17,3 +17,5 @@ Project steps to see the result
  Hope you will like the UI.
  
  
+# Hosted on Netlify
+https://appetocodechallenge.netlify.app
