@@ -1,0 +1,40 @@
+<form [formGroup]="formData" class="form-container">
+  <mat-form-field class="form-field">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" placeholder="Enter name">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type" placeholder="Enter type">
+  </mat-form-field>
+
+  <div formArrayName="children">
+    <div *ngFor="let child of children.controls; let i = index" [formGroupName]="i" class="child-container">
+      <h4>Child {{ i + 1 }}</h4>
+      <mat-form-field class="form-field">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type" placeholder="Enter type">
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="id" placeholder="Enter ID">
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter name">
+      </mat-form-field>
+
+      <button mat-icon-button color="warn" (click)="removeChild(i)" class="delete-button">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="buttons-container">
+    <button mat-raised-button color="primary" (click)="addChild()" class="add-button">Add Child</button>
+    <button mat-raised-button color="primary" (click)="submitForm()" class="submit-button">Submit</button>
+  </div>
+</form>

@@ -1,0 +1,67 @@
+<div class="center-div">
+  <div class="row" style="display: inline-block;width: 100%;">
+    <div class="col-6" style="float: left; width: 70%;">
+      <h2 style="color: white;">
+        Recent Campaigns
+      </h2>
+    </div>
+    <div class="col-6" style="float: left;margin-top: 25px;width: 30%;height: 50px;">
+      <mat-form-field>
+        <mat-icon class="mat-18" matPrefix>search</mat-icon>
+        <mat-label style="color: white;">Search here....</mat-label>
+        <input matInput (keyup)="applyFilter($event)" style="color: rgba(217, 0, 255, 0.72);" placeholder="Ex.John" #input />
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" cdkDropList (cdkDropListDropped)="drop($event)" cdkDropListData="dataSource" [cdkDropListDisabled]="dragDisabled">
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="no" sticky>
+      <mat-header-cell *matHeaderCellDef sortActionDescription="Sort by number">
+        <mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox> <span> No. </span></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(element) : null" [checked]="selection.isSelected(element)" [aria-label]="checkboxLabel(element)">
+        </mat-checkbox>
+        <span></span>
+        <mat-icon class="dragCursor" cdkDragHandle (mousedown)="dragDisabled = false;">reorder</mat-icon>
+        <span>{{element.id}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="campaign">
+      <mat-header-cell *matHeaderCellDef mat-column-campaign> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" mat-column-campaign> {{element.campaign}}
+      </mat-cell>
+
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-column-campaign> </mat-header-cell>
+      <mat-cell *matCellDef="let element" mat-column-campaign>
+        <button class="button-23" role="button" [ngClass]="[element.status ==='Sending' ? 'sending' : '',  element.status ==='Sent' ? 'sent' : '', element.status ==='Draft' ? 'draft' : '',element.status ==='Evaluate'?'evaluate':'',element.status ==='Error'?'error':'',element.status ==='Stopped'?'stopped':'',]">{{element.status}}</button>
+      </mat-cell>
+
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef mat-column-action> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element;let i" mat-column-action>
+        <button mat-button [matMenuTriggerFor]="menu" id="i"><mat-icon class="mat-18">more_vert</mat-icon></button>
+        <mat-menu class="customize" id="i" #menu="matMenu">
+          <button mat-menu-item>Statics</button>
+          <button mat-menu-item>Send again</button>
+          <button mat-menu-item>Copy</button>
+          <button mat-menu-item>Move to</button>
+          <button mat-menu-item>Delete</button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag [cdkDragData]="row"></mat-row>
+  </mat-table>
+</div>
