@@ -11,6 +11,33 @@
   z-index: -1;
   background-color: rgba(33, 34, 42, 255) !important ;
 }
+@media (max-width: 480px) {
+  .center-div {
+    width: calc(100%);
+    position: relative;
+    overflow: auto;
+    left: 150px;
+    height: 100%;
+    margin-top: 25px;
+  }
+  .mat-table {
+    width: 100%;
+  }
+}
+@media (max-width: 720px) {
+  .center-div {
+    width: calc(100%);
+    position: relative;
+    overflow: auto;
+    left: 145px;
+    height: 100%;
+    margin-top: 35px;
+  }
+  .mat-table {
+    width: 100%;
+    overflow: auto;
+  }
+}
 .mat-table {
   width: 100%;
   float: right;
@@ -40,7 +67,7 @@
   margin-right: 16px;
   cursor: move;
 }
-
+/* drag and drop cdk css for row */
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
@@ -104,7 +131,7 @@
     transform 0.1s;
   user-select: none;
   -webkit-user-select: none;
-  width: auto;
+  width: 12vh;
 }
 
 .button-23:focus-visible {
@@ -173,10 +200,7 @@
   color: white;
   font-size: 18px;
 }
-/* .mat-menu-cp {
-  background-color:  !important;
 
-} */
 ::ng-deep .customize {
   background: rgba(33, 34, 42, 255);
 }

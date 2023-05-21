@@ -1,68 +1,4 @@
-<!-- <mat-sidenav-container fullscreen>
-  <mat-sidenav mode="side" class="sidenav-back" opened="true">
-    <h3 class="head">Campaigns</h3>
-    <mat-nav-list>
-      <mat-list-item routerLink="1" routerLinkActive="active">
-        <button mat-flat-button class="campaign-item">
-          Recent
-        </button>
-      </mat-list-item>
-      <mat-list-item routerLink="1" routerLinkActive="active">
-        <div class="row folder">
-          <div style="float: left;width: 70%;">
-            <span style=" color: rgba(120, 121, 137, 255);">FOLDERS</span>
-          </div>
-          <div style="float: left;width: 15%;">
-            <mat-icon class="mat-18">add</mat-icon>
-          </div>
-          <div style="float: left;width: 15%;">
-            <mat-icon class="mat-18">keyboard_arrow_up</mat-icon>
-          </div>
-        </div>
-      </mat-list-item>
-
-      <mat-list-item *ngFor="let item of folderStruct" routerLinkActive="active" class="dynamic">
-        <ul class="nav-links" id="nav-links">
-          <li #itemEl routerLinkActive="active">
-            <div *ngIf="item.children.length == 0" class="dropdown-title">
-              <a [routerLink]="">
-                <span class="link_name">{{item.name}}</span>
-              </a>
-            </div>
-            <div *ngIf="item.children.length > 0" class="dropdown-title">
-              <a>
-                <mat-icon class="mat-18" (click)="showSubmenu(itemEl)">keyboard_arrow_right</mat-icon>
-                <span class="link_name">{{item.name}}</span>
-              </a>
-            </div>
-            <ul class="sub-menu" [class.blank]="item.children.length==0">
-              <li><a class="link_name">{{item.name}}</a></li>
-              <li *ngFor="let item_sub of item.children" routerLinkActive="active" style="color: white;">
-                <a [routerLink]="[item_sub.name]">{{item_sub.name}}</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </mat-list-item>
-      <mat-list-item *ngFor="let item of folderStruct">
-        <div class="sidenav">
-          <a class="dropdown-btn" #itemEl>
-            <mat-icon class="mat-18" (onclick)="showMenu(itemEl)">keyboard_arrow_right</mat-icon>
-            <span>{{item.name}}</span>
-          </a>
-          <div *ngIf="item.children.length>0" class="dropdown-container">
-            <a *ngFor="let childrenname of item.children" href="#">{{childrenname.name}}</a>
-          </div>
-        </div>
-      </mat-list-item>
-    </mat-nav-list>
-
-  </mat-sidenav>
-
-
-
-
-</mat-sidenav-container> -->
+<!-- navigationBar code -->
 <div class="sidebar">
   <div class="logo-details">
     <div class="logo">
@@ -72,6 +8,7 @@
   <button mat-flat-button class="campaign-item">
     Recent
   </button>
+  <!-- folder and campaign structure -->
   <div class="row folder">
     <div style="float: left;width: 70%;">
       <span style=" color: rgba(120, 121, 137, 255);">FOLDERS</span>

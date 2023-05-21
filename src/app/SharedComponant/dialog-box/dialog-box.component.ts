@@ -12,6 +12,7 @@ import {
   styleUrls: ['./dialog-box.component.css'],
 })
 export class DialogBoxComponent implements OnInit {
+  // initializing form and ingecting data from table list componant
   formData: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,

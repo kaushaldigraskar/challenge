@@ -13,11 +13,8 @@
       </mat-form-field>
     </div>
   </div>
+  <!-- Mat table for campaign list  -->
   <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" cdkDropList (cdkDropListDropped)="drop($event)" cdkDropListData="dataSource" [cdkDropListDisabled]="dragDisabled">
-    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
     <ng-container matColumnDef="no" sticky>
       <mat-header-cell *matHeaderCellDef sortActionDescription="Sort by number">
         <mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">

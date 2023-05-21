@@ -4,7 +4,19 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogBoxComponent } from '../SharedComponant/dialog-box/dialog-box.component';
 import { MatDialog } from '@angular/material/dialog';
+import { campaign } from '../tablelist/interface';
+export interface Folder {
+  name: string;
+  type: string;
+  children?: [];
+}
 
+// campaign.interface.ts
+export interface Campaign {
+  type: string;
+  id: string;
+  name: string;
+}
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,7 +28,7 @@ export class NavbarComponent implements OnInit {
   openfolder = false;
   hidelist = false;
   constructor(private router: Router, private dialog: MatDialog) {}
-  result = document.getElementsByClassName('dropdown-btn');
+  // Folder structure for refernce
   folderStruct = [
     {
       name: 'Christmas',
@@ -70,7 +82,7 @@ export class NavbarComponent implements OnInit {
     },
   ];
   ngOnInit(): void {}
-
+  //Manually handling java script navbar
   showMenu(itemEl: HTMLElement, id: number) {
     this.openfolder = !this.openfolder;
     const box = document.getElementById(id.toString());
@@ -83,6 +95,7 @@ export class NavbarComponent implements OnInit {
       this.router.navigateByUrl(item.location);
     }
   }
+  //Code to add new folder(checks for multiple children)
   addNewFolder() {
     this.addfolder = !this.addfolder;
     const dialogRef = this.dialog.open(DialogBoxComponent, {});
